@@ -1,0 +1,23 @@
+@use './variables' as var;
+
+// Permite crear un flex con valores variables.
+@mixin caja-flex($direction, $justify, $align, $gap:initial) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+// Estructura basica de todos los textos.
+@mixin font-properties($weight, $size, $color) {
+    font-weight: $weight;
+    font-size: $size;
+    color: $color;
+}
+
+@mixin desktop {
+    @media screen and (min-width: var.$medium) {
+        @content
+    }
+}
