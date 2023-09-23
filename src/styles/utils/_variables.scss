@@ -1,4 +1,5 @@
 // Colors
+$reda: red;
 $base:(
   "black": #000,
   "white": #FFF
@@ -92,6 +93,6 @@ $breakpoints: (
   "tablet": 744px,
   "laptop": 1280px,
   "desktop": 1440px,
-  "font-size-change": 1024px
+  "bp-fontSize": 1024px
 );
 

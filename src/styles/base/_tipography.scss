@@ -1,3 +1,5 @@
+@use '../utils/mixins';
+
 @font-face {
   font-family: 'Inter';
   src: url('src/fonts/Inter-Regular.ttf') format('truetype');
@@ -16,6 +18,51 @@ html {
   font-family: 'Inter', sans-serif;
 }
 
-
 h1 {
-  font-size: 15px}
+  @include mixins.fontProperties(40px,bold,44px,20px);
+  @include mixins.responsive(fontSize) {
+    @include mixins.fontProperties(56px,bold,60px,28px);
+  }
+}
+
+h2 {
+  @include mixins.fontProperties(32px,bold,36px,16px);
+  @include mixins.responsive(fontSize) {
+    @include mixins.fontProperties(48px,bold,52px,24px);
+  }
+}
+
+h3 {
+  @include mixins.fontProperties(20px,bold,24px,10px);
+  @include mixins.responsive(fontSize) {
+    @include mixins.fontProperties(40px,bold,44px,20px);
+  }
+}
+
+h4 {
+  @include mixins.fontProperties(20px,bold,24px,10px);
+  @include mixins.responsive(fontSize) {
+    @include mixins.fontProperties(32px,bold,36px,16px);
+  }
+}
+
+h5 {
+  @include mixins.fontProperties(20px,bold,24px,10px);
+  @include mixins.responsive(fontSize) {
+    @include mixins.fontProperties(24px,bold,28px,12px);
+  }
+}
+
+h6 {
+  @include mixins.fontProperties(20px,bold,24px,10px);
+  @include mixins.responsive(fontSize) {
+    @include mixins.fontProperties(20px,bold,24px,10px);
+  }
+}
+
+p {
+  @include mixins.fontProperties(14px,normal,22px,7px);
+  @include mixins.responsive(fontSize) {
+    @include mixins.fontProperties(16px,normal,24px,8px);
+  }
+}

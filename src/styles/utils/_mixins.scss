@@ -1,23 +1,61 @@
 @use './variables' as var;
 
+/**
+ * Configura las propiedades comunes para fuentes tipográficas.
+ * 
+ * Este mixin establece el tamaño de la fuente, peso de la fuente, altura de línea, 
+ * y márgenes superior e inferior para mejorar la consistencia en los estilos de texto.
+ * 
+ * @param {number} $size - Tamaño de fuente en píxeles.
+ * @param {number} $weight - Peso de la fuente.
+ * @param {number} $leading - Altura de línea en píxeles.
+ * @param {number} $paragraph - Espaciado entre párrafos en píxeles.
+ */
+@mixin fontProperties($size, $weight, $leading, $paragraph) {    
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $leading;
+  margin: $paragraph auto;
+}
+
+/**
+ * Aplica estilos condicionales basados en puntos de ruptura
+ * y ajustar el tamaño de la fuente tipográfica en un punto de ruptura personalizado.
+ *
+ * @param {string} $breakpoint - El punto de ruptura en el que se aplicarán los estilos
+ *   o se ajustará el tamaño de la fuente. Puede ser 'small', 'medium', 'large', 'fontSize' o 'custom'.
+ */
+@mixin responsive($breakpoint) {
+  @if $breakpoint == small {
+    @media (max-width: map-get(var.$breakpoints, mobile)) {
+      @content;
+    }
+  }
+  @else if $breakpoint == medium {
+    @media (min-width: map-get(var.$breakpoints, tablet)) and (max-width: map-get(var.$breakpoint, laptop)) {
+      @content;
+    }
+  }
+  @else if $breakpoint == large {
+    @media (min-width: map-get(var.$breakpoints, desktop)) {
+      @content;
+    }
+  }
+  @else if $breakpoint == fontSize {
+    @media (min-width: map-get(var.$breakpoints, bp-fontSize)) {
+      @content;
+    }
+  }
+  @else if $breakpoint == custom {
+    @content;
+  }
+}
+
 // Permite crear un flex con valores variables.
 @mixin caja-flex($direction, $justify, $align, $gap:initial) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-    align-items: $align;
-    gap: $gap;
-}
-
-// Estructura basica de todos los textos.
-@mixin font-properties($weight, $size, $color) {
-    font-weight: $weight;
-    font-size: $size;
-    color: $color;
-}
-
-@mixin desktop {
-    @media screen and (min-width: var.$medium) {
-        @content
-    }
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
 }
