@@ -11,7 +11,7 @@
  * @param {number} $leading - Altura de línea en píxeles.
  * @param {number} $paragraph - Espaciado entre párrafos en píxeles.
  */
-@mixin fontProperties($size, $weight, $leading, $paragraph) {    
+@mixin font_properties($size, $weight, $leading, $paragraph) {    
   font-size: $size;
   font-weight: $weight;
   line-height: $leading;
@@ -23,7 +23,7 @@
  * y ajustar el tamaño de la fuente tipográfica en un punto de ruptura personalizado.
  *
  * @param {string} $breakpoint - El punto de ruptura en el que se aplicarán los estilos
- *   o se ajustará el tamaño de la fuente. Puede ser 'small', 'medium', 'large', 'fontSize' o 'custom'.
+ *   o se ajustará el tamaño de la fuente. Puede ser 'small', 'medium', 'large', 'changeFontSize' o 'custom'.
  */
 @mixin responsive($breakpoint) {
   @if $breakpoint == small {
@@ -41,7 +41,7 @@
       @content;
     }
   }
-  @else if $breakpoint == fontSize {
+  @else if $breakpoint == changeFontSize {
     @media (min-width: map-get(var.$breakpoints, bp-fontSize)) {
       @content;
     }
@@ -52,7 +52,7 @@
 }
 
 // Permite crear un flex con valores variables.
-@mixin caja-flex($direction, $justify, $align, $gap:initial) {
+@mixin caja_flex($direction, $justify, $align, $gap:initial) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
