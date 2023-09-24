@@ -1,7 +1,36 @@
 @use '../utils/variables' as var;
 
 :root {
-  --primay-text: #{map-get(var.$neutral,"900")};
+  /* Colores neutros */
+  --white: #{map-get(var.$neutral,"50")};
+  --black: #{map-get(var.$neutral,"900")};
+  --gray-very-light: #{map-get(var.$neutral,"200")};
+  --gray-light: #{map-get(var.$neutral,"300")};
+  --gray: #{map-get(var.$neutral,"400")};
+  --gray-dark: #{map-get(var.$neutral,"500")};
+
+  /* Colores de marca */
+  --brand-color: #{map-get(var.$violet,"500")};
+  --brand-dark-color: #{map-get(var.$violet,"600")};
+  --brand-disabled-color: #{map-get(var.$violet,"400")};
+  
+  /* Colores de texto */
+  --txt-primary-color: #{map-get(var.$neutral,"900")};
+  --txt-secondary-color: #{map-get(var.$neutral,"500")};
+  --txt-tertiary-light-color: #{map-get(var.$orange,"400")};
+  --txt-tertiary-color: #{map-get(var.$orange,"500")};
+  --txt-heading-color: #{map-get(var.$others,"dark-blue")};
+
+  /* Colores de fondo */
+  --bg-primary-color: #{map-get(var.$neutral,"50")};
+  --bg-secondary-color: #{map-get(var.$others,"dark-blue")};
+
+  /* Colores de redes sociales */
+  --whatsapp: #{map-get(var.$others,"light-green")};
+  --facebook: #{map-get(var.$others,"blue")};
+  --youtube: #{map-get(var.$others,"youtube-red")};
+  --tiktok: #{map-get(var.$base,"black")};
+  --instagram: #{map-get(var.$others,"dark-orange")};
 }
 
 body {
