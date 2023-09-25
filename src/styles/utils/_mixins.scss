@@ -51,8 +51,18 @@
   }
 }
 
-// Permite crear un flex con valores variables.
-@mixin caja_flex($direction, $justify, $align, $gap:initial) {
+/**
+ * Configura las propiedades flexbox en un elemento.
+ * 
+ * Este mixin establece las propiedades de CSS comunes de flexbox, como la dirección,
+ * la alineación y el espacio entre elementos.
+ * 
+ * @param {string} $direction - Dirección de los elementos (ejemplo: row, column).
+ * @param {string} $justify - Alineación horizontal de los elementos (ejemplo: flex-start, center).
+ * @param {string} $align - Alineación vertical de los elementos (ejemplo: flex-start, stretch).
+ * @param {string} $gap - Espacio entre elementos (valor en píxeles).
+ */
+@mixin flexbox($direction:row, $justify:flex-start, $align:flex-start, $gap:initial) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;

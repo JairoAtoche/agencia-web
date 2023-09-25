@@ -1,0 +1,49 @@
+---
+import '@styles/index.scss';
+import { Image } from 'astro:assets';
+import Logo from '@images/logo.png';
+import { Icon } from 'astro-icon';
+import MenuItem from './Heading/MenuItem.astro';
+---
+
+<header>
+	<a href='./'>
+		<Image src={Logo} alt='logotipo de la empresa' />
+	</a>
+	<nav>
+		<ul>
+			<li>
+				<MenuItem name='Inicio' icon='ic:sharp-home' url='#' />
+			</li>
+			<li>
+				<a href='#'>
+					<Icon name='ic:sharp-home' />
+					 Servicios
+				</a>
+			</li>
+			<li>
+				<a href='#'>
+					<Icon name='ic:sharp-home' />
+					 Precios
+				</a>
+			</li>
+			<li>
+				<a href='#'>
+					<Icon name='ic:sharp-home' />
+					 Metodología
+				</a>
+			</li>
+			<li>
+				<a href='#'>
+					<Icon name='ph:hamburger-fill' />
+					 Contáctanos
+				</a>
+			</li>
+		</ul>
+	</nav>
+</header>
+<style>
+	header {
+		background-color: var(--bg-secondary-color);
+	}
+</style>
