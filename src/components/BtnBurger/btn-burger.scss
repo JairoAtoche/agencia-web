@@ -1,0 +1,29 @@
+.icon {
+  width: 30px;
+  height: 20px;
+  padding: 2px;
+  cursor: pointer;
+  &__line {    
+    background-color: var(--white);
+    width: 30px;
+    height: 4px;
+    border-radius: 50px;
+    transition-duration: .5s;
+    &:nth-child(2) {
+      margin: 4px auto;
+    }
+  }
+}
+
+.open > .icon__line {
+  transition-duration: .5s;
+    &:first-child {
+      transform: translateY(8px) rotate(225deg);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:last-child {
+      transform: translateY(-8px) rotate(-225deg);
+    }
+}
