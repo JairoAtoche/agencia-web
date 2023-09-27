@@ -3,12 +3,26 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@routes/*": ["src/routes/*"],
-      "@pages/*": ["src/pages/*"],
-      "@styles/*": ["src/styles/*"],
-      "@images/*": ["src/images/*"],
-    }
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@routes/*": [
+        "src/routes/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@images/*": [
+        "src/images/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }
