@@ -1,0 +1,17 @@
+---
+type options = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+type Props = {
+	tagType: options;
+	size?: string;
+	bolded?: boolean;
+	classes?: string;
+};
+
+const { tagType, size, bolded = true, classes, ...rest } = Astro.props;
+const Tag = tagType;
+---
+
+<Tag class:list={[size, bolded, classes]} {...rest}>
+	<slot />
+</Tag>

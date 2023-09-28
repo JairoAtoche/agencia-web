@@ -1,0 +1,49 @@
+---
+interface Props {
+	tagType?: string;
+	size: 'xs' | 's' | 'n' | 'm' | 'l';
+	bolded?: boolean;
+	classes?: string;
+}
+
+const { tagType = 'p', size, bolded = false, classes, ...rest } = Astro.props;
+const Tag = tagType;
+---
+
+<Tag class:list={[size, { bold: bolded }, classes]} {...rest}>
+	<slot />
+</Tag>
+<style lang='scss'>
+	@use '@styles/utils/mixins.scss';
+	.xs {
+		@include mixins.font-properties(12px, normal, 20px, 6px);
+		@include mixins.responsive(changeFontSize) {
+			@include mixins.font-properties(14px, normal, 22px, 7px);
+		}
+	}
+	.s {
+		@include mixins.font-properties(14px, normal, 22px, 7px);
+		@include mixins.responsive(changeFontSize) {
+			@include mixins.font-properties(16px, normal, 24px, 8px);
+		}
+	}
+	.n {
+		@include mixins.font-properties(16px, normal, 24px, 8px);
+		@include mixins.responsive(changeFontSize) {
+			@include mixins.font-properties(18px, normal, 26px, 9px);
+		}
+	}
+	.m {
+		@include mixins.font-properties(18px, normal, 26px, 9px);
+		@include mixins.responsive(changeFontSize) {
+			@include mixins.font-properties(20px, normal, 28px, 10px);
+		}
+	}
+	.l {
+		@include mixins.font-properties(20px, normal, 28px, 10px);
+	}
+
+	.bold {
+		font-weight: bold;
+	}
+</style>

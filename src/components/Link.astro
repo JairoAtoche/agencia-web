@@ -1,0 +1,63 @@
+---
+import { Icon } from 'astro-icon';
+
+interface Props {
+	text: string;
+	href: string;
+	style: 'primary' | 'secondary';
+	icon?: {
+		name: string;
+		side: 'left' | 'right';
+	};
+	bolded?: boolean;
+	underline?: boolean;
+	borderVisible?: boolean;
+	classes?: string;
+}
+
+const {
+	text,
+	href,
+	style,
+	icon,
+	bolded = false,
+	borderVisible = false,
+	underline = false,
+	classes,
+	...rest
+} = Astro.props;
+---
+
+<a
+	href={href}
+	class:list={[
+		'link',
+		classes,
+		style,
+		{ bold: bolded },
+		{ bordered: borderVisible },
+		{ 'font-underline': underline },
+	]}
+	{...rest}>
+	{
+		icon && icon.side === 'left' && (
+			<Icon name={icon.name} height='20' width='20' margin='2' />
+		)
+	}
+	{text}
+	{
+		icon && icon.side === 'right' && (
+			<Icon name={icon.name} height='20' width='20' margin='2' />
+		)
+	}
+</a>
+<style>
+	.bordered {
+	}
+	.bold {
+		font-weight: bold;
+	}
+	.font-underline {
+		text-decoration: underline;
+	}
+</style>
