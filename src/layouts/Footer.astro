@@ -1,0 +1,291 @@
+---
+import { Image } from 'astro:assets';
+import Logo from '@assets/logo.png';
+import Link from '@components/Link.astro';
+import { ROUTES } from '@routes/path.ts';
+import { WSP, EMAIL } from '@consts/info';
+import Text from '@components/Text.astro';
+const VanillaWSP = WSP.replaceAll(' ', '');
+---
+
+<footer class='footer'>
+	<div class='footer__content'>
+		<div class='footer__empresa'>
+			<div class='logo'>
+				<Image src={Logo} alt='logotipo de la empresa' class='logo__img' />
+			</div>
+			<Text size='s' classes='footer__p'>
+				En DevCode transformamos ideas en experiencias digitales excepcionales
+				con innovación y diseño.
+			</Text><Text size='s' classes='footer__p'>
+				Únete a nosotros para hacer realidad tu visión digital hoy mismo.
+			</Text>
+		</div>
+		<nav class='footer__legal'>
+			<Text size='n' bolded classes='nav__title footer__p'>Legal</Text>
+			<ul class='nav__list'>
+				<Link
+					size='s'
+					text='Aviso Legal'
+					href={ROUTES.LEGAL_NOTICE}
+					icon={{
+						name: 'healthicons:justice-outline',
+						side: 'left',
+					}}
+					classes='list__item'
+				/>
+				<Link
+					size='s'
+					text='Términos y Condiciones'
+					href={ROUTES.TERMS_CONDITIONS}
+					icon={{
+						name: 'mdi:file-document-edit',
+						side: 'left',
+					}}
+					classes='list__item'
+				/>
+				<Link
+					size='s'
+					text='Política de Privacidad'
+					href={ROUTES.PRIVACY_POLICY}
+					icon={{
+						name: 'ic:round-privacy-tip',
+						side: 'left',
+					}}
+					classes='list__item'
+				/>
+				<Link
+					size='s'
+					text='Política de Cookies'
+					href={ROUTES.COOKIES_POLICY}
+					icon={{
+						name: 'fluent:cookies-20-filled',
+						side: 'left',
+					}}
+					classes='list__item'
+				/>
+				<Link
+					size='s'
+					text='Libro de Reclamaciones'
+					href={ROUTES.COMPLAINTS_BOOK}
+					icon={{
+						name: 'libro-reclamaciones',
+						side: 'left',
+					}}
+					classes='list__item'
+				/>
+			</ul>
+		</nav>
+		<nav class='footer__explora'>
+			<Text size='n' bolded classes='nav__title footer__p'>Explora</Text>
+			<ul class='nav__list'>
+				<Link
+					size='s'
+					text='Inicio'
+					href={ROUTES.HOME}
+					icon={{
+						name: 'ic:round-home',
+						side: 'left',
+					}}
+					classes='list__item'
+				/>
+				<Link
+					size='s'
+					text='Servicios'
+					href={ROUTES.SERVICES}
+					icon={{
+						name: 'ic:round-miscellaneous-services',
+						side: 'left',
+					}}
+					classes='list__item'
+				/>
+				<Link
+					size='s'
+					text='Precios'
+					href={ROUTES.PRICING}
+					icon={{
+						name: 'ion:pricetags',
+						side: 'left',
+					}}
+					classes='list__item'
+				/>
+				<Link
+					size='s'
+					text='Metodología'
+					href={ROUTES.METHODOLOGY}
+					icon={{
+						name: 'eos-icons:content-lifecycle-management',
+						side: 'left',
+					}}
+					classes='list__item'
+				/>
+				<Link
+					size='s'
+					text='Portafolio'
+					href={ROUTES.PORTFOLIO}
+					icon={{
+						name: 'mdi:folder-open',
+						side: 'left',
+					}}
+					classes='list__item'
+				/>
+				<Link
+					size='s'
+					text='Contáctanos'
+					href={ROUTES.CONTACT_US}
+					icon={{
+						name: 'bi:telephone-fill',
+						side: 'left',
+					}}
+					classes='list__item'
+				/>
+			</ul>
+		</nav>
+		<div class='footer__contacto'>
+			<nav>
+				<Text size='n' bolded classes='nav__title footer__p'>Contáctanos</Text>
+				<ul class='nav__list'>
+					<Link
+						size='s'
+						text={EMAIL}
+						href={`mailto:${EMAIL}`}
+						icon={{
+							name: 'ic:round-email',
+							side: 'left',
+						}}
+						classes='list__item'
+					/>
+					<Link
+						size='s'
+						text={WSP}
+						href={`tel:+51${VanillaWSP}`}
+						icon={{
+							name: 'mdi:cellphone-android',
+							side: 'left',
+						}}
+						classes='list__item'
+					/>
+				</ul>
+			</nav>
+			<nav>
+				<Text size='n' bolded classes='nav__title footer__p'>Síguenos en:</Text>
+				<ul class='nav__list nav__list--modifier'>
+					<Link
+						size='s'
+						text=''
+						href={'https://www.facebook.com'}
+						icon={{
+							name: 'ic:round-facebook',
+							side: 'left',
+						}}
+						classes='list__item'
+					/>
+					<Link
+						size='s'
+						text=''
+						href={'https://www.tiktok.com'}
+						icon={{
+							name: 'ic:round-tiktok',
+							side: 'left',
+						}}
+						classes='list__item'
+					/>
+					<Link
+						size='s'
+						text=''
+						href={'https://www.instagram.com'}
+						icon={{
+							name: 'ri:instagram-fill',
+							side: 'left',
+						}}
+						classes='list__item'
+					/>
+					<Link
+						size='s'
+						text=''
+						href={'https://www.youtube.com'}
+						icon={{
+							name: 'bi:youtube',
+							side: 'left',
+						}}
+						classes='list__item'
+					/>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<Text size='xs' classes='footer__copyright footer__p'>
+		© Copyright 2023 - DevCode
+	</Text>
+</footer>
+<style lang='scss'>
+	@use '@styles/utils/mixins.scss';
+	.footer {
+		background-color: var(--bg-secondary-color);
+		@include mixins.flexbox(column, center, center, initial);
+		padding: 0 16px;
+		@include mixins.responsive(tablet) {
+			padding: 0 32px;
+		}
+		@include mixins.responsive(laptop) {
+			padding: 0 80px;
+		}
+		@include mixins.responsive(desktop) {
+			padding: 0 160px;
+		}
+		&__content {
+			margin: 24px 0;
+			width: 100%;
+			@include mixins.flexbox(column, space-between, flex-start, initial);
+			@include mixins.responsive(large) {
+				flex-direction: row;
+				margin: 40px 0;
+			}
+		}
+		&__empresa {
+			width: 100%;
+			max-width: 256px;
+		}
+		&__legal {
+			width: 100%;
+			max-width: 224px;
+		}
+		&__explora {
+			width: 100%;
+			max-width: 125px;
+		}
+		&__contacto {
+			width: 100%;
+			max-width: 200px;
+		}
+		&__copyright {
+			margin-bottom: 24px;
+			@include mixins.responsive(large) {
+				margin-bottom: 40px;
+			}
+		}
+		&__p {
+			color: var(--white);
+		}
+	}
+
+	.logo {
+		margin-bottom: 24px;
+	}
+	.nav__title {
+		margin-bottom: 16px;
+		@include mixins.responsive(large) {
+			margin-bottom: 24px;
+		}
+	}
+	.nav__list--modifier {
+		@include mixins.flexbox(row, flex-start, stretch, 18px);
+	}
+	.list__item {
+		justify-content: start;
+		width: 100%;
+		&:hover {
+			font-weight: bold;
+		}
+	}
+</style>
