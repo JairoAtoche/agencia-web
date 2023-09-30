@@ -2,14 +2,14 @@
 
 @font-face {
   font-family: 'Inter';
-  src: url('src/fonts/Inter-Regular.ttf') format('truetype');
+  src: url('public/fonts/Inter-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Inter';
-  src: url('src/fonts/Inter-Bold.ttf') format('truetype');
+  src: url('public/fonts/Inter-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
@@ -20,49 +20,74 @@ html {
 
 h1 {
   @include mixins.font-properties(40px,bold,44px,20px);
-  @include mixins.responsive(fontSize) {
+  @include mixins.responsive(laptop) {
     @include mixins.font-properties(56px,bold,60px,28px);
   }
 }
 
 h2 {
   @include mixins.font-properties(32px,bold,36px,16px);
-  @include mixins.responsive(fontSize) {
+  @include mixins.responsive(laptop) {
     @include mixins.font-properties(48px,bold,52px,24px);
   }
 }
 
 h3 {
   @include mixins.font-properties(20px,bold,24px,10px);
-  @include mixins.responsive(fontSize) {
+  @include mixins.responsive(laptop) {
     @include mixins.font-properties(40px,bold,44px,20px);
   }
 }
 
 h4 {
   @include mixins.font-properties(20px,bold,24px,10px);
-  @include mixins.responsive(fontSize) {
+  @include mixins.responsive(laptop) {
     @include mixins.font-properties(32px,bold,36px,16px);
   }
 }
 
 h5 {
   @include mixins.font-properties(20px,bold,24px,10px);
-  @include mixins.responsive(fontSize) {
+  @include mixins.responsive(laptop) {
     @include mixins.font-properties(24px,bold,28px,12px);
   }
 }
 
 h6 {
   @include mixins.font-properties(20px,bold,24px,10px);
-  @include mixins.responsive(fontSize) {
+  @include mixins.responsive(laptop) {
     @include mixins.font-properties(20px,bold,24px,10px);
   }
 }
 
 p {
   @include mixins.font-properties(14px,normal,22px,7px);
-  @include mixins.responsive(fontSize) {
+  @include mixins.responsive(laptop) {
     @include mixins.font-properties(16px,normal,24px,8px);
   }
+}
+
+.xs {
+  @include mixins.font-properties(12px, normal, 20px, 6px);
+}
+.s {
+  @include mixins.font-properties(12px, normal, 20px, 6px);
+  @include mixins.responsive(laptop) {
+    @include mixins.font-properties(14px, normal, 22px, 7px);
+  }
+}
+.n {
+  @include mixins.font-properties(14px, normal, 22px, 7px);
+  @include mixins.responsive(laptop) {
+    @include mixins.font-properties(16px, normal, 24px, 8px);
+  }
+}
+.m {
+  @include mixins.font-properties(16px, normal, 24px, 8px);
+  @include mixins.responsive(laptop) {
+    @include mixins.font-properties(18px, normal, 26px, 9px);
+  }
+}
+.l {
+  @include mixins.font-properties(20px, normal, 28px, 10px);
 }

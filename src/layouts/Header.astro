@@ -1,49 +1,333 @@
 ---
-import '@styles/index.scss';
 import { Image } from 'astro:assets';
-import Logo from '@images/logo.png';
-import { Icon } from 'astro-icon';
-import MenuItem from './Heading/MenuItem.astro';
+import Logo from '@assets/logo.png';
+import Link from '@components/Link.astro';
+import { ROUTES } from '@routes/path.ts';
+import BtnBurger from '@components/BtnBurger.astro';
+import { WSP } from '@consts/info';
+const VanillaWSP = WSP.replaceAll(' ', '');
 ---
 
-<header>
-	<a href='./'>
-		<Image src={Logo} alt='logotipo de la empresa' />
+<header class='header'>
+	<a href={ROUTES.HOME} class='header__logo logo'>
+		<Image src={Logo} alt='logotipo de la empresa' class='logo__img' />
 	</a>
-	<nav>
-		<ul>
-			<li>
-				<MenuItem name='Inicio' icon='ic:sharp-home' url='#' />
+	<BtnBurger />
+	<nav class='header__nav nav'>
+		<ul class='nav__list'>
+			<li class='nav__item'>
+				<Link
+					size='m'
+					text='Inicio'
+					href={ROUTES.HOME}
+					icon={{ name: 'ic:round-home', side: 'left', hiddenIcon: true }}
+					borderVisible
+					classes='nav__link'
+				/>
 			</li>
-			<li>
-				<a href='#'>
-					<Icon name='ic:sharp-home' />
-					 Servicios
-				</a>
+			<li class='nav__item nav__item--modifier'>
+				<Link
+					size='m'
+					text='Servicios'
+					href={ROUTES.SERVICES}
+					icon={{
+						name: 'ic:round-miscellaneous-services',
+						side: 'left',
+						hiddenIcon: true,
+					}}
+					iconTwo={{ name: 'ion:plus', side: 'right' }}
+					classes='nav__link--desktop'
+					borderVisible
+				/>
+				<Link
+					size='m'
+					text='Servicios'
+					icon={{
+						name: 'ic:round-miscellaneous-services',
+						side: 'left',
+						hiddenIcon: true,
+					}}
+					iconTwo={{ name: 'ion:plus', side: 'right' }}
+					classes='nav__link nav__link--mobile'
+				/>
+				<ul class='nav__sublist sublist'>
+					<li class='sublist__item'>
+						<Link
+							size='n'
+							text='Sitio Informativo'
+							href={`${ROUTES.SERVICES}#Sitio-informativo`}
+							icon={{
+								name: 'ic:twotone-laptop',
+								side: 'left',
+							}}
+							classes='nav__link'
+						/>
+					</li>
+					<li class='sublist__item'>
+						<Link
+							size='n'
+							text='Tienda Virtual'
+							href={`${ROUTES.SERVICES}#tienda-virtual`}
+							icon={{
+								name: 'ic:round-shopping-cart',
+								side: 'left',
+							}}
+							classes='nav__link'
+						/>
+					</li>
+					<li class='sublist__item'>
+						<Link
+							size='n'
+							text='Blogs y Noticias'
+							href={`${ROUTES.SERVICES}#blogs-noticias`}
+							icon={{
+								name: 'ion:newspaper',
+								side: 'left',
+							}}
+							classes='nav__link'
+						/>
+					</li>
+					<li class='sublist__item'>
+						<Link
+							size='n'
+							text='Landing Page'
+							href={`${ROUTES.SERVICES}#landing-page`}
+							icon={{
+								name: 'ri:article-fill',
+								side: 'left',
+							}}
+							classes='nav__link'
+						/>
+					</li>
+					<li class='sublist__item'>
+						<Link
+							size='n'
+							text='Aplicaciones Web'
+							href={`${ROUTES.SERVICES}#aplicaciones-web`}
+							icon={{
+								name: 'mdi:database',
+								side: 'left',
+							}}
+							classes='nav__link'
+						/>
+					</li>
+					<li class='sublist__item'>
+						<Link
+							size='n'
+							text='Rediseño Web'
+							href={`${ROUTES.SERVICES}#rediseño-web`}
+							icon={{
+								name: 'ic:round-design-services',
+								side: 'left',
+							}}
+							classes='nav__link'
+						/>
+					</li>
+				</ul>
 			</li>
-			<li>
-				<a href='#'>
-					<Icon name='ic:sharp-home' />
-					 Precios
-				</a>
+			<li class='nav__item'>
+				<Link
+					size='m'
+					text='Precios'
+					href={ROUTES.PRICING}
+					icon={{ name: 'ion:pricetags', side: 'left', hiddenIcon: true }}
+					borderVisible
+					classes='nav__link'
+				/>
 			</li>
-			<li>
-				<a href='#'>
-					<Icon name='ic:sharp-home' />
-					 Metodología
-				</a>
+			<li class='nav__item'>
+				<Link
+					size='m'
+					text='Metodología'
+					href={ROUTES.METHODOLOGY}
+					icon={{
+						name: 'eos-icons:content-lifecycle-management',
+						side: 'left',
+						hiddenIcon: true,
+					}}
+					borderVisible
+					classes='nav__link'
+				/>
 			</li>
-			<li>
-				<a href='#'>
-					<Icon name='ph:hamburger-fill' />
-					 Contáctanos
-				</a>
+			<li class='nav__item'>
+				<Link
+					size='m'
+					text='Portafolio'
+					href={ROUTES.PORTFOLIO}
+					icon={{ name: 'mdi:folder-open', side: 'left', hiddenIcon: true }}
+					borderVisible
+					classes='nav__link'
+				/>
+			</li>
+			<li class='nav__item'>
+				<Link
+					size='m'
+					text='Contáctanos'
+					href={ROUTES.CONTACT_US}
+					icon={{ name: 'bi:telephone-fill', side: 'left', hiddenIcon: true }}
+					borderVisible
+					classes='nav__link'
+				/>
+			</li>
+			<li class='nav__item'>
+				<Link
+					size='m'
+					text={WSP}
+					href={`www.wa.me/${VanillaWSP}`}
+					icon={{ name: 'WhatsApp', side: 'left' }}
+					classes='nav__link nav__link--wsp'
+				/>
 			</li>
 		</ul>
 	</nav>
 </header>
-<style>
-	header {
+<style lang='scss'>
+	@use '@styles/utils/mixins.scss';
+	.header {
+		width: 100%;
+		height: 56px;
+		@include mixins.flexbox(row, space-between, center, initial);
+		padding: 0 16px;
 		background-color: var(--bg-secondary-color);
+		position: fixed;
+		z-index: 1000;
+		@include mixins.responsive(tablet) {
+			padding: 0 32px;
+		}
+		@include mixins.responsive(laptop) {
+			padding: 0 80px;
+		}
+		@include mixins.responsive(desktop) {
+			padding: 0 160px;
+		}
+		@include mixins.responsive(large) {
+			height: 72px;
+		}
+	}
+	.logo {
+		width: 48px;
+		height: 32px;
+		@include mixins.responsive(large) {
+			width: 60px;
+			height: 40px;
+		}
+	}
+	.nav__link--wsp {
+		transition: 0.4s ease-out;
+		&:hover {
+			color: var(--whatsapp);
+		}
+	}
+	.header__nav {
+		position: absolute;
+		width: 100%;
+		top: 100%;
+		min-height: 100vh;
+		right: -200%;
+		transition: all 0.5s ease-out;
+		background-color: var(--bg-secondary-color);
+	}
+	.nav__item {
+		border-bottom: 1px solid var(--white);
+		width: 100%; //
+		margin: 0; //
+		min-height: 44px;
+		height: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		& a {
+			width: 100%;
+			margin: 0;
+			height: 44px;
+		}
+	}
+	.nav__item:last-child {
+		border-bottom: none;
+	}
+	.nav__link--desktop {
+		display: none;
+	}
+	.sublist {
+		display: none;
+		background-color: var(--bg-secondary-color);
+		width: 100%;
+	}
+	.nav__item:focus-within > .nav__sublist,
+	.nav__item:hover > .nav__sublist {
+		display: initial;
+	}
+	.nav__link {
+		justify-content: flex-start;
+		padding-left: 16px;
+		@include mixins.responsive(tablet) {
+			padding-left: 32px;
+		}
+		@include mixins.responsive(large) {
+			padding: 0;
+		}
+	}
+	@include mixins.responsive(large) {
+		.nav__link--mobile {
+			display: none;
+		}
+		.nav__link--desktop {
+			display: flex;
+		}
+		.header__nav {
+			position: static;
+			width: auto;
+			top: auto;
+			right: auto;
+			min-height: auto;
+			transition: none;
+		}
+		.nav {
+			&__item {
+				position: relative;
+				float: left;
+				margin: 0 12px;
+				border-bottom: none;
+				width: auto;
+			}
+			.nav__link--desktop {
+				display: flex;
+				flex-direction: center;
+				align-items: center;
+				justify-content: center;
+			}
+			&__item:last-child {
+				margin-right: 0;
+			}
+			&__list {
+				margin: 0;
+			}
+		}
+		.nav__item {
+			display: flex;
+			align-items: flex-start;
+		}
+		.sublist {
+			display: flex;
+			flex-direction: column;
+			position: absolute;
+			top: 100%;
+			width: 200px;
+			border-bottom: 1px solid var(--white);
+			display: none;
+			&__item a {
+				justify-content: flex-start;
+				height: 40px;
+				margin: 0;
+				transition: 0.4s ease-out all;
+
+				&:hover {
+					color: var(--txt-tertiary-color);
+				}
+			}
+			&:last-child {
+				border-bottom: none;
+			}
+		}
 	}
 </style>

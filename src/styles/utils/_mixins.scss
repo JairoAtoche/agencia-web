@@ -23,26 +23,31 @@
  * y ajustar el tamaño de la fuente tipográfica en un punto de ruptura personalizado.
  *
  * @param {string} $breakpoint - El punto de ruptura en el que se aplicarán los estilos
- *   o se ajustará el tamaño de la fuente. Puede ser 'small', 'medium', 'large', 'changeFontSize' o 'custom'.
+ *   o se ajustará el tamaño de la fuente. Puede ser 'mobile', 'tablet', 'laptop' o 'custom'.
  */
 @mixin responsive($breakpoint) {
-  @if $breakpoint == small {
-    @media (max-width: map-get(var.$breakpoints, mobile)) {
+  @if $breakpoint == mobile {
+    @media (max-width: map-get(var.$breakpoints, tablet)) {
       @content;
     }
   }
-  @else if $breakpoint == medium {
-    @media (min-width: map-get(var.$breakpoints, tablet)) and (max-width: map-get(var.$breakpoint, laptop)) {
+  @else if $breakpoint == tablet {
+    @media (min-width: map-get(var.$breakpoints, tablet)) and (max-width: map-get(var.$breakpoints, laptop)) {
       @content;
     }
   }
-  @else if $breakpoint == large {
+  @else if $breakpoint == laptop {
+    @media (min-width: map-get(var.$breakpoints, laptop)) and (max-width: map-get(var.$breakpoints, desktop)) {
+      @content;
+    }
+  }
+  @else if $breakpoint == desktop {
     @media (min-width: map-get(var.$breakpoints, desktop)) {
       @content;
     }
   }
-  @else if $breakpoint == changeFontSize {
-    @media (min-width: map-get(var.$breakpoints, bp-fontSize)) {
+  @else if $breakpoint == large {
+    @media (min-width: map-get(var.$breakpoints, laptop)) {
       @content;
     }
   }
