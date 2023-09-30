@@ -67,7 +67,7 @@
  * @param {string} $align - Alineación vertical de los elementos (ejemplo: flex-start, stretch).
  * @param {string} $gap - Espacio entre elementos (valor en píxeles).
  */
-@mixin flexbox($direction:row, $justify:flex-start, $align:flex-start, $gap:initial) {
+@mixin flexbox($direction:row, $justify:flex-start, $align:stretch, $gap:initial) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;

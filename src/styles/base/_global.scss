@@ -1,5 +1,5 @@
 @use '../utils/variables' as var;
-
+@use '../utils/mixins.scss';
 * {
   box-sizing: border-box;
 }
@@ -37,8 +37,7 @@
   --instagram: #{map-get(var.$others,"dark-orange")};
 }
 body {
-  display: flex;
-  flex-direction: column;
+  @include mixins.flexbox(column, space-between, stretch, initial);
   min-height: 100vh;
   
   background-color: var(--bg-primary-color); /*change*/
@@ -57,14 +56,10 @@ li {
   list-style: none;
 }
 a {
-  color: white;  
+  color: var(--white);  
   font-size: 18px;
-  text-decoration: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  text-decoration: none;  
+  @include mixins.flexbox(row, center, center, 8px);
 }
 
 img {    

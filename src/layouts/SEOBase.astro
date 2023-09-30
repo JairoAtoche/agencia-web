@@ -1,6 +1,8 @@
 ---
 import '@styles/index.scss';
 
+import Footer from '@layouts/Footer.astro';
+
 interface Props {
 	title: string;
 	description: string;
@@ -37,5 +39,6 @@ const url = Astro.url;
 	</head>
 	<body>
 		<slot />
+		<Footer />
 	</body>
 </html>
