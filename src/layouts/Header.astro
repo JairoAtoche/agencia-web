@@ -6,6 +6,18 @@ import { ROUTES } from '@routes/path.ts';
 import BtnBurger from '@components/BtnBurger.astro';
 import { WSP } from '@consts/info';
 const VanillaWSP = WSP.replaceAll(' ', '');
+
+interface Props {
+	activeMenu?:
+		| 'Inicio'
+		| 'Servicios'
+		| 'Precios'
+		| 'Metodologia'
+		| 'Portafolio'
+		| 'Contactanos';
+}
+
+const { activeMenu } = Astro.props;
 ---
 
 <header class='header'>
@@ -23,6 +35,7 @@ const VanillaWSP = WSP.replaceAll(' ', '');
 					icon={{ name: 'ic:round-home', side: 'left', hiddenIcon: true }}
 					borderVisible
 					classes='nav__link'
+					underline={activeMenu === 'Inicio'}
 				/>
 			</li>
 			<li class='nav__item nav__item--modifier'>
@@ -38,6 +51,7 @@ const VanillaWSP = WSP.replaceAll(' ', '');
 					iconTwo={{ name: 'ion:plus', side: 'right' }}
 					classes='nav__link--desktop'
 					borderVisible
+					underline={activeMenu === 'Servicios'}
 				/>
 				<Link
 					size='m'
@@ -133,6 +147,7 @@ const VanillaWSP = WSP.replaceAll(' ', '');
 					icon={{ name: 'ion:pricetags', side: 'left', hiddenIcon: true }}
 					borderVisible
 					classes='nav__link'
+					underline={activeMenu === 'Precios'}
 				/>
 			</li>
 			<li class='nav__item'>
@@ -147,6 +162,7 @@ const VanillaWSP = WSP.replaceAll(' ', '');
 					}}
 					borderVisible
 					classes='nav__link'
+					underline={activeMenu === 'Metodologia'}
 				/>
 			</li>
 			<li class='nav__item'>
@@ -157,6 +173,7 @@ const VanillaWSP = WSP.replaceAll(' ', '');
 					icon={{ name: 'mdi:folder-open', side: 'left', hiddenIcon: true }}
 					borderVisible
 					classes='nav__link'
+					underline={activeMenu === 'Portafolio'}
 				/>
 			</li>
 			<li class='nav__item'>
@@ -167,6 +184,7 @@ const VanillaWSP = WSP.replaceAll(' ', '');
 					icon={{ name: 'bi:telephone-fill', side: 'left', hiddenIcon: true }}
 					borderVisible
 					classes='nav__link'
+					underline={activeMenu === 'Contactanos'}
 				/>
 			</li>
 			<li class='nav__item'>
@@ -267,6 +285,7 @@ const VanillaWSP = WSP.replaceAll(' ', '');
 			padding: 0;
 		}
 	}
+
 	@include mixins.responsive(large) {
 		.nav__link--mobile {
 			display: none;
