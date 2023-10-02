@@ -2,6 +2,9 @@
 import '@styles/index.scss';
 
 import Footer from '@layouts/Footer.astro';
+import FloatButton from '@layouts/FloatButton.astro';
+import { WSP } from '@consts/info';
+const VanillaWSP = WSP.replaceAll(' ', '');
 
 interface Props {
 	title: string;
@@ -40,5 +43,9 @@ const url = Astro.url;
 	<body>
 		<slot />
 		<Footer />
+		<FloatButton
+			href={`www.wa.me/${VanillaWSP}`}
+			icon='akar-icons:whatsapp-fill'
+		/>
 	</body>
 </html>

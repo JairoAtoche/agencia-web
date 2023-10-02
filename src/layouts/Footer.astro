@@ -3,9 +3,8 @@ import { Image } from 'astro:assets';
 import Logo from '@assets/logo.png';
 import Link from '@components/Link.astro';
 import { ROUTES } from '@routes/path.ts';
-import { WSP, EMAIL } from '@consts/info';
+import { WSP, EMAIL, WSP_TRIM } from '@consts/info';
 import Text from '@components/Text.astro';
-const VanillaWSP = WSP.replaceAll(' ', '');
 ---
 
 <footer class='footer'>
@@ -158,7 +157,7 @@ const VanillaWSP = WSP.replaceAll(' ', '');
 					<Link
 						size='s'
 						text={WSP}
-						href={`tel:+51${VanillaWSP}`}
+						href={`tel:+51${WSP_TRIM}`}
 						icon={{
 							name: 'mdi:cellphone-android',
 							side: 'left',

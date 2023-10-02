@@ -4,8 +4,7 @@ import Logo from '@assets/logo.png';
 import Link from '@components/Link.astro';
 import { ROUTES } from '@routes/path.ts';
 import BtnBurger from '@components/BtnBurger.astro';
-import { WSP } from '@consts/info';
-const VanillaWSP = WSP.replaceAll(' ', '');
+import { WSP, WSP_LINK } from '@consts/info';
 
 interface Props {
 	activeMenu?:
@@ -191,7 +190,7 @@ const { activeMenu } = Astro.props;
 				<Link
 					size='m'
 					text={WSP}
-					href={`www.wa.me/${VanillaWSP}`}
+					href={WSP_LINK}
 					icon={{ name: 'WhatsApp', side: 'left' }}
 					classes='nav__link nav__link--wsp'
 				/>
