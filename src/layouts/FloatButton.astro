@@ -1,0 +1,43 @@
+---
+import { Icon } from 'astro-icon';
+interface Props {
+	href: string;
+	icon: string;
+}
+
+const { href, icon } = Astro.props;
+---
+
+<a href={href} class='float'>
+	<Icon name={icon} class='float__icon' />
+</a>
+<style lang='scss'>
+	@use '@styles/utils/mixins.scss';
+	[astro-icon] {
+		width: 100px;
+		height: 100px;
+		transition: all 0.3s ease-out;
+	}
+	.float {
+		display: none;
+		@include mixins.responsive(large) {
+			position: fixed;
+			height: 56px;
+			width: 56px;
+			bottom: 52px;
+			right: 52px;
+			background-color: var(--whatsapp);
+			padding: 8px;
+			z-index: 100;
+			border-radius: 50%;
+			@include mixins.flexbox(row, center, center, initial);
+			transition: all 0.5s;
+			&:hover {
+				background-color: var(--white);
+				& [astro-icon] {
+					color: var(--whatsapp);
+				}
+			}
+		}
+	}
+</style>
